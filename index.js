@@ -11,7 +11,7 @@ const server = http.createServer((req, res) => {
     // set header content type
     res.setHeader('Content-Type', 'text/html');
 
-    let path = './views/';
+    let path = './';
     switch(req.url) {
         case '/':
             path += 'index.html';
@@ -19,6 +19,9 @@ const server = http.createServer((req, res) => {
         case '/about':
             path += 'about.html';
             break;
+        case '/contact':
+            path += 'contact.html';
+            break;    
         default:
             path += 'error404.html';
             break;
