@@ -1,7 +1,6 @@
 require('dotenv').config()
 const http = require('http');
 const fs = require('fs');
-const url = require('url');
 // const url = require('url');
 const PORT = process.env.PORT;
 
@@ -15,15 +14,24 @@ const server = http.createServer((req, res) => {
     switch(req.url) {
         case '/':
             path += 'index.html';
+            res.statusCode = 200;
             break;
         case '/about':
             path += 'about.html';
+            res.statusCode = 200;
             break;
+        case '/about-me':
+            res.statusCode = 301;
+            res.setHeader('Location', '/about');
+            res.end();
+            break;    
         case '/contact':
             path += 'contact.html';
+            res.statusCode = 200;
             break;    
         default:
             path += 'error404.html';
+            res.statusCode = 404;
             break;
     };
 
